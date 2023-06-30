@@ -19,14 +19,14 @@ use CodeIgniter\Config\BaseService;
  */
 class Services extends BaseService
 {
-    /*
-     * public static function example($getShared = true)
-     * {
-     *     if ($getShared) {
-     *         return static::getSharedInstance('example');
-     *     }
-     *
-     *     return new \CodeIgniter\Example();
-     * }
-     */
+    public static function twig()
+    {
+        $loader = new \Twig\Loader\FilesystemLoader(APPPATH . 'Views');
+        $twig = new \Twig\Environment($loader, [
+            'cache' => WRITEPATH . 'cache/twig',
+        ]);
+        
+        return $twig;
+    }    
 }
+

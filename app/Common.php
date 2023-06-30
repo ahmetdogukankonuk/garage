@@ -13,3 +13,10 @@
  *
  * @see: https://codeigniter.com/user_guide/extending/common.html
  */
+
+ if (!function_exists('view')) {
+    function view($tpl, $data = []) {
+        $twig = \Config\Services::twig();
+        return $twig->render($tpl, $data);
+    }
+}
