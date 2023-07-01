@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'components/head.twig' %}
+
+    <body id="body-pd">
+        {% include 'components/header.twig' %}
+
+        {% include 'components/sidebar.twig' %}
+        
+        <div class="px-4 page-title title-color">
+            <h3>Araçlar</h3>
+            <a href="" class="btn add-new-button btn-theme text-white rounded-4 shadow float-end">
+                <span><i class="bi bi-file-earmark-plus"></i> Yeni Ekle</span>
+            </a>
+        </div>
+
+        <section class="mb-5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card border-0 rounded-4 shadow py-2 card-bg">
+                            <div class="card-body mx-3 table-responsive">
+
+                                <table id="example" class="table" width="100%">
+                                    <thead class="text-center">
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Marka</th>
+                                            <th scope="col">Model</th>
+                                            <th scope="col">Yakıt Tipi</th>
+                                            <th scope="col">Plaka No</th>
+                                            <th scope="col">Müşteri İsim</th>
+                                            <th scope="col">Aksiyonlar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-center" style="vertical-align: baseline;">
+                                        {% for vehicle in vehicles %}
+                                            <tr>
+                                                <td><i class="bi bi-list fs-5"></i></td>
+                                                <td>{{ vehicle['id'] }}</td>
+                                                <td>{{ vehicle['brandID'] }}</td>
+                                                <td>{{ vehicle['modelName'] }}</td>
+                                                <td>{{ vehicle['fuelType'] }}</td>
+                                                <td>{{ vehicle['plateNo'] }}</td>
+                                                <td>{{ vehicle['customerName'] }}</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-center">
+                                                        <a href="tel:{{ vehicle['customerPhone'] }}">
+                                                            <i class="bi bi-telephone-fill fs-5 text-info me-4"></i>
+                                                        </a>
+                                                        <a href="update-product.html">
+                                                            <i class="bi bi-pencil-square fs-5 text-secondary me-4"></i>
+                                                        </a>
+                                                        <a href="">
+                                                            <i class="bi bi-trash fs-5 text-danger"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    <tfoot class="text-center">
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Marka</th>
+                                            <th scope="col">Model</th>
+                                            <th scope="col">Yakıt Tipi</th>
+                                            <th scope="col">Plaka No</th>
+                                            <th scope="col">Müşteri İsim</th>
+                                            <th scope="col">Aksiyonlar</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% include 'components/scripts.twig' %}
+    </body>
+</html>
