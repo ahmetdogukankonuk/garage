@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'components/head.twig' %}
+
+    <body id="body-pd">
+        {% include 'components/header.twig' %}
+
+        {% include 'components/sidebar.twig' %}
+
+        <div class="px-4 page-title title-color">
+            <h3> Yeni Araç Ekle </h3>
+        </div>
+
+        <section class="mb-5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card border-0 rounded-4 shadow py-5 card-bg">
+                            <div class="px-xl-5 px-4">
+                                <form action="{{ app.request.getSchemeAndHttpHost() ~ ('addVehicle') }}" method="post">
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="brandID" class="form-label text-color">Marka</label>
+                                                <select class="form-select" name="brandID" id="brandID"  aria-label="Default select example">
+                                                    <option selected> Bir marka seçiniz </option>
+                                                    {% for brand in brands %}
+                                                        <option value="{{ brand['id'] }}">{{ brand['name'] }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="fuelType" class="form-label text-color">Yakıt Tipi</label>
+                                                <select class="form-select" name="fuelType" id="fuelType"  aria-label="Default select example">
+                                                    <option selected>Yakıt seçiniz</option>
+                                                    <option value="Benzin">Benzin</option>
+                                                    <option value="Dizel">Dizel</option>
+                                                    <option value="LPG">LPG</option>
+                                                    <option value="Elektrik">Elektrik</option>
+                                                    <option value="Hibrit">Hibrit</option>
+                                                    <option value="Hidrojen">Hidrojen</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="modelName" class="form-label text-color"> Model </label>
+                                                <input type="text" class="form-control" name="modelName" id="modelName" placeholder="Model">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="modelYear" class="form-label text-color"> Model Yılı </label>
+                                                <input type="text" class="form-control" name="modelYear" id="modelYear" placeholder="Model Yılı">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="plateNo" class="form-label text-color"> Plaka </label>
+                                                <input type="text" class="form-control" name="plateNo" id="plateNo" placeholder="Plaka">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="chassisNo" class="form-label text-color"> Şasi No </label>
+                                                <input type="text" class="form-control" name="chassisNo" id="chassisNo" placeholder="Şasi No">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="customerName" class="form-label text-color"> Müşteri İsim </label>
+                                                <input type="text" class="form-control" name="customerName" id="customerName" placeholder="Müşteri İsim">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="customerPhone" class="form-label text-color"> Müşteri Telefon </label>
+                                                <input type="text" class="form-control" name="customerPhone" id="customerPhone" placeholder="Müşteri Telefon">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="dateReceived" class="form-label text-color"> Teslim Alma Tarihi </label>
+                                                <input type="date" class="form-control" name="dateReceived" id="dateReceived" placeholder="Teslim Alma Tarihi">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="dateDelivery" class="form-label text-color"> Teslim Etme Tarihi </label>
+                                                <input type="date" class="form-control" name="dateDelivery" id="dateDelivery" placeholder="Teslim Etme Tarihi">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label for="description" class="form-label text-color">Açıklama</label>
+                                                <textarea class="form-control" name="description" id="description" cols="30" rows="10" placeholder="Açıklama"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-grid mt-3">
+                                        <button type="submit" class="btn btn-theme rounded-4 p-2">
+                                            Kaydet
+                                        </button>
+                                    </div>
+                                    <div class="d-grid mt-2">
+                                        <a href="{{ app.request.getSchemeAndHttpHost() ~ ('home') }}" class="btn btn-outline-primary rounded-4 p-2">
+                                            İptal Et
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        {% include 'components/scripts.twig' %}
+    </body>
+</html>

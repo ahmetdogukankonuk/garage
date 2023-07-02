@@ -9,7 +9,7 @@
         
         <div class="px-4 page-title title-color">
             <h3>Araçlar</h3>
-            <a href="" class="btn add-new-button btn-theme text-white rounded-4 shadow float-end">
+            <a href="{{ app.request.getSchemeAndHttpHost() ~ ('vehicle-new')}}" class="btn add-new-button btn-theme text-white rounded-4 shadow float-end">
                 <span><i class="bi bi-file-earmark-plus"></i> Yeni Ekle</span>
             </a>
         </div>
@@ -47,13 +47,13 @@
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href="tel:{{ vehicle['customerPhone'] }}">
-                                                            <i class="bi bi-telephone-fill fs-5 text-info me-4"></i>
+                                                            <i class="bi bi-telephone-fill fs-5 text-secondary me-4"></i>
                                                         </a>
-                                                        <a href="update-product.html">
-                                                            <i class="bi bi-pencil-square fs-5 text-secondary me-4"></i>
+                                                        <a href="{{ app.request.getSchemeAndHttpHost() ~ '/vehicle-detail/' ~ vehicle.id }}">
+                                                            <i class="bi bi-eye-fill fs-5 text-info me-4"></i>
                                                         </a>
-                                                        <a href="">
-                                                            <i class="bi bi-trash fs-5 text-danger"></i>
+                                                        <a href="{{ app.request.getSchemeAndHttpHost() ~ '/vehicle-delete/' ~ vehicle.id }}">
+                                                            <i class="bi bi-trash-fill fs-5 text-danger"></i>
                                                         </a>
                                                     </div>
                                                 </td>

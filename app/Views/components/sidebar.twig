@@ -1,7 +1,7 @@
         <div class="sidebar" id="navbar">
             <nav class="sidebar-nav">
                 <div>
-                    <a href="" class="sidebar-logo">
+                    <a href="{{ app.request.getSchemeAndHttpHost() ~ ('home') }}" class="sidebar-logo">
                         <i class="bi bi-app sidebar-logo-icon"></i>
                         <span class="sidebar-logo-name">Garage</span>
                     </a>
@@ -15,15 +15,11 @@
                             <div class="collapse" id="dashboard-collapse">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pt-2 small">
                                     <li>
-                                        <a href="new-brand" class="sidebar-sublink rounded">
-                                            <i class="bi bi-plus-circle sub-sidebar-icon"></i>
-                                            New Brand
-                                        </a>
-                                        <a href="new-car" class="sidebar-sublink rounded">
+                                        <a href="{{ app.request.getSchemeAndHttpHost() ~ ('vehicle-new')}}" class="sidebar-sublink rounded">
                                             <i class="bi bi-plus-circle sub-sidebar-icon"></i>
                                             New Car
                                         </a>
-                                        <a href="" class="sidebar-sublink rounded sub-active">
+                                        <a href="{{ app.request.getSchemeAndHttpHost() ~ ('home')}}" class="sidebar-sublink rounded sub-active">
                                             <i class="bi bi-car-front-fill sub-sidebar-icon"></i>
                                             All Cars
                                         </a>
@@ -33,7 +29,7 @@
                         </li>
                     </div>
                 </div>
-                <a href="login.html" class="sidebar-link my-3">
+                <a href="{{ app.request.getSchemeAndHttpHost() ~ ('home') }}" class="sidebar-link my-3">
                     <i class="bi bi-box-arrow-left sidebar-icon"></i>
                     <span>Logout</span>
                 </a>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'components/head.twig' %}
+
+    <body id="body-pd">
+        {% include 'components/header.twig' %}
+
+        {% include 'components/sidebar.twig' %}
+
+        Araç markası: {{ vehicle.brand }}
+        Araç modeli: {{ vehicle.model }}
+
+
+        {% include 'components/scripts.twig' %}
+    </body>
+</html>
