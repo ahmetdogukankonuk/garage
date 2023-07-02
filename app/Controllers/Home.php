@@ -7,6 +7,7 @@ use App\Models\BrandsModel;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
+
 class Home extends BaseController
 {
     public function index(){
@@ -20,23 +21,6 @@ class Home extends BaseController
 
         // Render the template and return the result
         echo $twig->render('home.twig', ['vehicles' => $vehicles]);
-
-    }
-
-    public function vehicleDetail($id){
-
-        $vehiclesModel = new VehiclesModel();
-        $vehicle = $vehiclesModel->getVehicleById($id);
-
-        if ($vehicle) {
-
-        // Twig template engine configuration
-        $loader = new FilesystemLoader(APPPATH . 'Views');
-        $twig = new Environment($loader);
-            echo $twig->render('vehicle_detail.twig', ['vehicle' => $vehicle]);
-        } else {
-            echo "Araç bulunamadı.";
-        }
 
     }
 
@@ -75,7 +59,7 @@ class Home extends BaseController
     public function addVehicle(){
 
         // Form verilerini al
-        $brandID = $this->request->getPost('brandID');
+        $brandName = $this->request->getPost('brandName');
         $modelName = $this->request->getPost('modelName');
         $modelYear = $this->request->getPost('modelYear');
         $fuelType = $this->request->getPost('fuelType');
@@ -89,7 +73,7 @@ class Home extends BaseController
 
         // Form validasyon kurallarını tanımla
         $validationRules = [
-            'brandID' => 'required',
+            'brandName' => 'required',
             'modelName' => 'required',
             'modelYear' => 'required',
             'fuelType' => 'required',
@@ -108,7 +92,7 @@ class Home extends BaseController
 
         // Vehicles tablosuna yeni bir araç kaydedin
         $vehicleData = [
-            'brandID' => $brandID,
+            'brandName' => $brandName,
             'modelName' => $modelName,
             'modelYear' => $modelYear,
             'fuelType' => $fuelType,

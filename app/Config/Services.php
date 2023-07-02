@@ -25,8 +25,11 @@ class Services extends BaseService
         $twig = new \Twig\Environment($loader, [
             'cache' => WRITEPATH . 'cache/twig',
         ]);
+
+        $aliases['brandhelper'] = App\Helpers\BrandHelper::class;
         
         return $twig;
     }    
+    
 }
 

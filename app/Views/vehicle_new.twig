@@ -22,11 +22,11 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="brandID" class="form-label text-color">Marka</label>
-                                                <select class="form-select" name="brandID" id="brandID"  aria-label="Default select example">
+                                                <label for="brandName" class="form-label text-color">Marka</label>
+                                                <select class="form-select" name="brandName" id="brandName"  aria-label="Default select example">
                                                     <option selected> Bir marka seçiniz </option>
                                                     {% for brand in brands %}
-                                                        <option value="{{ brand['id'] }}">{{ brand['name'] }}</option>
+                                                        <option value="{{ brand['name'] }}">{{ brand['name'] }}</option>
                                                     {% endfor %}
                                                 </select>
                                             </div>

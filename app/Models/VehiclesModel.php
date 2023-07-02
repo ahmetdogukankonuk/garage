@@ -8,7 +8,7 @@ class VehiclesModel extends Model
 {
     protected $table = 'vehicles';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['brandID', 'modelName', 'modelYear', 'fuelType', 'plateNo', 'chassisNo', 'customerName', 'customerPhone', 'dateReceived', 'dateDelivery', 'description', 'situation'];
+    protected $allowedFields = ['brandName', 'modelName', 'modelYear', 'fuelType', 'plateNo', 'chassisNo', 'customerName', 'customerPhone', 'dateReceived', 'dateDelivery', 'description', 'situation'];
     
     public function getAllVehicles(){
 

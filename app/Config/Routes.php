@@ -34,7 +34,6 @@ $routes->group('', ['namespace' => 'App\Controllers'], function($routes) {
     $routes->get('home', 'Home::index');
     $routes->match(['get', 'post'], 'addVehicle', 'Home::addVehicle');
     $routes->get('vehicle-new', 'Home::vehicleNew');
-    $routes->get('vehicle-detail/(:any)', 'Home::vehicleDetail/$1');
     $routes->get('vehicle-delete/(:any)', 'Home::vehicleDelete/$1');
 });
 
