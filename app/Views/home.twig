@@ -31,6 +31,7 @@
                                             <th scope="col">Yakıt Tipi</th>
                                             <th scope="col">Plaka No</th>
                                             <th scope="col">Müşteri İsim</th>
+                                            <th scope="col">Durum</th>
                                             <th scope="col">Aksiyonlar</th>
                                         </tr>
                                     </thead>
@@ -44,6 +45,7 @@
                                                 <td>{{ vehicle['fuelType'] }}</td>
                                                 <td>{{ vehicle['plateNo'] }}</td>
                                                 <td>{{ vehicle['customerName'] }}</td>
+                                                <td>{{ vehicle['situation'] }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href="tel:{{ vehicle['customerPhone'] }}">
@@ -69,6 +71,7 @@
                                             <th scope="col">Yakıt Tipi</th>
                                             <th scope="col">Plaka No</th>
                                             <th scope="col">Müşteri İsim</th>
+                                            <th scope="col">Durum</th>
                                             <th scope="col">Aksiyonlar</th>
                                         </tr>
                                     </tfoot>

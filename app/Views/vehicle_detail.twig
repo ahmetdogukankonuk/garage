@@ -17,14 +17,14 @@
                     <div class="col-12">
                         <div class="card border-0 rounded-4 shadow py-5 card-bg">
                             <div class="px-xl-5 px-4">
-                                <form action="{{ app.request.getSchemeAndHttpHost() ~ ('addVehicle') }}" method="post">
+                                <form action="{{ app.request.getSchemeAndHttpHost() ~ '/updateVehicle/' ~ vehicle.id }}" method="post">
                                     
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="brandName" class="form-label text-color">Marka</label>
                                                 <select class="form-select" name="brandName" id="brandName"  aria-label="Default select example">
-                                                    <option selected> Bir marka seçiniz </option>
+                                                    <option selected> {{ vehicle['brandName'] }} </option>
                                                     {% for brand in brands %}
                                                         <option value="{{ brand['name'] }}">{{ brand['name'] }}</option>
                                                     {% endfor %}
@@ -35,7 +35,7 @@
                                             <div class="mb-3">
                                                 <label for="fuelType" class="form-label text-color">Yakıt Tipi</label>
                                                 <select class="form-select" name="fuelType" id="fuelType"  aria-label="Default select example">
-                                                    <option selected>Yakıt seçiniz</option>
+                                                    <option selected>{{ vehicle['fuelType'] }}</option>
                                                     <option value="Benzin">Benzin</option>
                                                     <option value="Dizel">Dizel</option>
                                                     <option value="LPG">LPG</option>
@@ -51,13 +51,13 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="modelName" class="form-label text-color"> Model </label>
-                                                <input type="text" class="form-control" name="modelName" id="modelName" placeholder="Model">
+                                                <input type="text" class="form-control" name="modelName" id="modelName" placeholder="Model" value="{{ vehicle['modelName'] }}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="modelYear" class="form-label text-color"> Model Yılı </label>
-                                                <input type="text" class="form-control" name="modelYear" id="modelYear" placeholder="Model Yılı">
+                                                <input type="text" class="form-control" name="modelYear" id="modelYear" placeholder="Model Yılı" value="{{ vehicle['modelYear'] }}">
                                             </div>
                                         </div>
                                     </div>
@@ -66,13 +66,13 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="plateNo" class="form-label text-color"> Plaka </label>
-                                                <input type="text" class="form-control" name="plateNo" id="plateNo" placeholder="Plaka">
+                                                <input type="text" class="form-control" name="plateNo" id="plateNo" placeholder="Plaka" value="{{ vehicle['plateNo'] }}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="chassisNo" class="form-label text-color"> Şasi No </label>
-                                                <input type="text" class="form-control" name="chassisNo" id="chassisNo" placeholder="Şasi No">
+                                                <input type="text" class="form-control" name="chassisNo" id="chassisNo" placeholder="Şasi No" value="{{ vehicle['chassisNo'] }}">
                                             </div>
                                         </div>
                                     </div>
@@ -81,13 +81,13 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="customerName" class="form-label text-color"> Müşteri İsim </label>
-                                                <input type="text" class="form-control" name="customerName" id="customerName" placeholder="Müşteri İsim">
+                                                <input type="text" class="form-control" name="customerName" id="customerName" placeholder="Müşteri İsim" value="{{ vehicle['customerName'] }}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="customerPhone" class="form-label text-color"> Müşteri Telefon </label>
-                                                <input type="text" class="form-control" name="customerPhone" id="customerPhone" placeholder="Müşteri Telefon">
+                                                <input type="text" class="form-control" name="customerPhone" id="customerPhone" placeholder="Müşteri Telefon" value="{{ vehicle['customerPhone'] }}">
                                             </div>
                                         </div>
                                     </div>
@@ -96,35 +96,46 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="dateReceived" class="form-label text-color"> Teslim Alma Tarihi </label>
-                                                <input type="date" class="form-control" name="dateReceived" id="dateReceived" placeholder="Teslim Alma Tarihi">
+                                                <input type="date" class="form-control" name="dateReceived" id="dateReceived" placeholder="Teslim Alma Tarihi" value="{{ vehicle['dateReceived'] }}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="dateDelivery" class="form-label text-color"> Teslim Etme Tarihi </label>
-                                                <input type="date" class="form-control" name="dateDelivery" id="dateDelivery" placeholder="Teslim Etme Tarihi">
+                                                <input type="date" class="form-control" name="dateDelivery" id="dateDelivery" placeholder="Teslim Etme Tarihi" value="{{ vehicle['dateDelivery'] }}">
                                             </div>
                                         </div>
                                     </div>
-                                    
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label for="situation" class="form-label text-color">Araç Durumu</label>
+                                                <select class="form-select" name="situation" id="situation"  aria-label="Default select example">
+                                                    <option selected>{{ vehicle['situation'] }}</option>
+                                                    <option value="Araç Kaporta Bölümünde"> Araç Kaporta Bölümünde</option>
+                                                    <option value="Araç Elektrik Bölümünde">Araç Elektrik Bölümünde</option>
+                                                    <option value="Araç Boya Bölümünde">Araç Boya Bölümünde</option>
+                                                    <option value="Araç Hazır">Araç Hazır</option>
+                                                    <option value="Araç Teslim Edildi">Araç Teslim Edildi</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label for="description" class="form-label text-color">Açıklama</label>
-                                                <textarea class="form-control" name="description" id="description" cols="30" rows="10" placeholder="Açıklama"></textarea>
+                                                <textarea class="form-control" name="description" id="description" cols="30" rows="10" placeholder="Açıklama">{{ vehicle['description'] }}</textarea>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="d-grid mt-3">
-                                        <button type="submit" class="btn btn-theme rounded-4 p-2">
+                                        <button type="submit" class="btn btn-outline-primary rounded-4 p-2">
                                             Kaydet
                                         </button>
-                                    </div>
-                                    <div class="d-grid mt-2">
-                                        <a href="{{ app.request.getSchemeAndHttpHost() ~ ('home') }}" class="btn btn-outline-primary rounded-4 p-2">
-                                            İptal Et
-                                        </a>
                                     </div>
                                 </form>
                             </div>

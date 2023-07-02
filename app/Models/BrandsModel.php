@@ -8,6 +8,7 @@ class BrandsModel extends Model
 {
     protected $table = 'brands';
     protected $primaryKey = 'id';
+    protected $allowedFields = ['name'];
 
     public function getAllBrands(){
 
